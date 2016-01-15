@@ -10,7 +10,7 @@ Step 1 : - initial all chosen-select
           $(".chosen-select").chosen();
           
 
-Step 2 : - overwrite
+Step 2 : - overwrite case 13 in chosen.js
   
           var select,chosen;
     // cache the select element as we'll be using it a few times
