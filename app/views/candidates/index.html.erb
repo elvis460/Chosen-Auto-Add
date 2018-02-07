@@ -1,0 +1,20 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class=" col-md-4 Country m-bot15">
+      <label for="Country"><span>Country: <span style="color:black"></span></span>
+      </label>
+      <select data-placeholder="Country" id="country_select" data-candidateid="<%= @candidate.id%>" style="width: 350px; " class="chosen-select" tabindex="-1">
+        <option value=""></option>
+        <% @country.each do |c|%>
+          <option value="<%= c.id%>" <%if @candidate.country.present? %>
+            <%if c.id == @candidate.country.id%> selected=""
+              <%end%>
+                <%end%>>
+                  <%= c.name%>
+          </option>
+          <%end%>
+      </select>
+    </div>
+  </div>
+</div>
+<script src="/my/js/chosen_auto_add.js"></script>

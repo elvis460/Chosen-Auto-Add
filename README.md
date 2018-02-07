@@ -1,29 +1,37 @@
-$(document).ready(function() {
+# Allow jQuery plugin [Chosen](https://harvesthq.github.io/chosen/) Auto Add
+
+* Backend Framework - Ruby on Rails
+
+I used Chosen plugin for option selection, and I made some modifications allow `Auto Add` an option which is not shown on the selection bar by `pressing Enter`.
+
+If you are interested in this plugin, just follow the introduction below.
+
+
+## Step 1 - Initial chosen-select
+
+  ```
   $(".chosen-select").chosen();
+  ```
+          
 
-  $('#country_select').change(function() {
-    $.ajax({
-      method: 'put',
-      url: '/candidates/update',
-      data: {
-        country_id: $(this).val(),
-        candidate_id: $(this).data('candidateid')
-      }
-    });
-  });
+## Step 2 - Overwrite case 13 in  `chosen.js`
 
-
-  $('.chosen-container').on('click', function() {
-    var select, chosen;
+```
+  var select, chosen;
     // cache the select element as we'll be using it a few times
     select = $('#' + $(this).prev('select').attr('id'));
+
     // init the chosen plugin
     select.chosen();
+
     // get the chosen object
     chosen = select.data('chosen');
+
     // Bind the keyup event to the search box input
     chosen.dropdown.find('input').on('keyup', function(e) {
+
       // if we hit Enter and the results list is empty (no matches) add the option
+
       if (e.which == 13 && chosen.dropdown.find('li.no-results').length > 0) {
         $.ajax({
           method: 'post',
@@ -43,6 +51,8 @@ $(document).ready(function() {
           }
         });
       }
-    });
-  });
-});
+    
+```
+
+## You could clone this project to see the Demo.
+        

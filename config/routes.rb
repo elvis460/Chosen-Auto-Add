@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-    match ':controller(/:action(/:id))(.:format)', via: [:get, :post]
-
+  root 'candidates#index'
+  resources :candidates do 
+    collection do
+      post 'auto_add_country'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
